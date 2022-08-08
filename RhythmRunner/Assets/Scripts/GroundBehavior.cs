@@ -5,11 +5,11 @@ using UnityEngine;
 public class GroundBehavior : MonoBehaviour
 {
     public float groundHeight;
-    public BoxCollider2D groundCollider;
+    BoxCollider2D collider;
 
     private void Awake()
     {
-        groundCollider = GetComponent<BoxCollider2D>();
-        groundHeight = transform.position.y + (groundCollider.size.y / 2);
+        collider = GetComponent<BoxCollider2D>();
+        groundHeight = transform.position.y + (collider.size.y / 2);
     }
 }

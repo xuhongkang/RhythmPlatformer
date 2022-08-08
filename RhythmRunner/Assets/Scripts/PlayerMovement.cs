@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        
+        realTime.Init(); 
     }
 
     void Update()
@@ -82,6 +82,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 realTime.velocity.x = playerStats.runVelocity;
             }
+			Vector2 rayOrigin = new Vector2(pos.x - levelConfig.sidePadding, pos.y);
+            Vector2 rayDirection = Vector2.up;
+            float rayDistance = realTime.velocity.y * Time.fixedDeltaTime;
+            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
+            if (hit2D.collider == null)
+            {
+                realTime.isGrounded = false;
+            }
+            Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.yellow);
         }
 
         transform.position = pos;

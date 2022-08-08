@@ -5,11 +5,21 @@ using UnityEngine;
 [CreateAssetMenu(fileName="RealTimeData",menuName="ScriptableObjects/RealTimeData")]
 public class RealTimeData : ScriptableObject
 {
-    public float distance = 0.0f;
+    public float distance;
     public Vector2 velocity;
     public float groundHeight;
-    public bool isGrounded =  false;
-    public bool isHoldingJump = false;
-    public float holdJumpTimer = 0.0f;
+    public bool isGrounded;
+    public bool isHoldingJump;
+    public float holdJumpTimer;
     public float hAcceleration;
+
+	public void Init() {
+		distance = 0.0f;
+    	velocity = new Vector2(0.0f,0.0f);
+    	groundHeight = 0.0f;
+    	isGrounded =  false;
+    	isHoldingJump = false;
+    	holdJumpTimer = 0.0f;
+    	hAcceleration = 0.0f;
+	}
 }
