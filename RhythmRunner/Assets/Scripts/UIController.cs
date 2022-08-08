@@ -16,6 +16,8 @@ public class UIController : MonoBehaviour
     
     void Update()
     {
-        distanceText.text = "Distance: " + Mathf.Round(realTime.distance).ToString();
+        distanceText.text = "Distance: " + Mathf.Round(realTime.distance).ToString() 
+                             + "\nVelocity: " + Mathf.Round(realTime.velocity.x).ToString()
+                             + "\nAcceleration: " + Mathf.Round(realTime.hAcceleration).ToString();
     }
 }

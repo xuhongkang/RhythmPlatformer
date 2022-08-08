@@ -10,7 +10,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        realTime.Init(); 
+        realTime.Init();
+		if (!playerStats.isRunUpNeeded || !playerStats.isVelocityDynamic) {
+			realTime.velocity.x = playerStats.runVelocity;
+		}
+		if (!playerStats.isHoldJumpScalable) {
+			realTime.maxHoldJumpTime = playerStats.maxMaxHoldJumpTime;
+		}
     }
 
     void Update()
@@ -37,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        realTime.distance += realTime.velocity.x * Time.fixedDeltaTime;
+		realTime.distance += realTime.velocity.x * Time.fixedDeltaTime;
         Vector2 pos = transform.position;
         
         if (!realTime.isGrounded)
@@ -46,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
             if (realTime.isHoldingJump)
             {
                 realTime.holdJumpTimer += Time.fixedDeltaTime;
-                if (realTime.holdJumpTimer >= playerStats.maxHoldJumpTime)
+                if (realTime.holdJumpTimer >= realTime.maxHoldJumpTime)
                 {
                     realTime.isHoldingJump = false;
                 }
@@ -75,13 +81,23 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            float velocityRatio = realTime.velocity.x / playerStats.runVelocity;
-            realTime.hAcceleration = playerStats.maxAcceleration * (1 - velocityRatio);
-            realTime.velocity.x += realTime.hAcceleration * Time.fixedDeltaTime;
-            if (velocityRatio >= 1)
-            {
-                realTime.velocity.x = playerStats.runVelocity;
-            }
+           	if (playerStats.isVelocityDynamic)
+           	{
+				float velocityRatio = realTime.velocity.x / playerStats.runVelocity;
+				if (playerStats.isVelocityCapped) {
+            		realTime.hAcceleration = playerStats.maxAcceleration * (1 - velocityRatio);
+					realTime.velocity.x += realTime.hAcceleration * Time.fixedDeltaTime;
+					if (velocityRatio >= 1) {
+						realTime.velocity.x = playerStats.runVelocity;
+					}
+				} else {
+					realTime.hAcceleration = Mathf.Max(1f, playerStats.maxAcceleration * velocityRatio);
+					realTime.velocity.x += realTime.hAcceleration * Time.fixedDeltaTime;
+				}
+				if (playerStats.isHoldJumpScalable) {
+					realTime.maxHoldJumpTime = playerStats.maxMaxHoldJumpTime * velocityRatio;
+				}
+           	}
 			Vector2 rayOrigin = new Vector2(pos.x - levelConfig.sidePadding, pos.y);
             Vector2 rayDirection = Vector2.up;
             float rayDistance = realTime.velocity.y * Time.fixedDeltaTime;

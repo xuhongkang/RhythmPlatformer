@@ -12,6 +12,7 @@ public class RealTimeData : ScriptableObject
     public bool isHoldingJump;
     public float holdJumpTimer;
     public float hAcceleration;
+	public float maxHoldJumpTime;
 
 	public void Init() {
 		distance = 0.0f;
@@ -21,5 +22,6 @@ public class RealTimeData : ScriptableObject
     	isHoldingJump = false;
     	holdJumpTimer = 0.0f;
     	hAcceleration = 0.0f;
+		maxHoldJumpTime = 0.0f;
 	}
 }

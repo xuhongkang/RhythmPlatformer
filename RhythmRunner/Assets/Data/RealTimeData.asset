@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df690a25af29ad24dafc9c81d5487ec4, type: 3}
   m_Name: RealTimeData
   m_EditorClassIdentifier: 
-  distance: 0
-  velocity: {x: 0, y: 0}
-  isGrounded: 0
+  distance: 8227.786
+  velocity: {x: 446.60477, y: 0}
+  groundHeight: 10
+  isGrounded: 1
   isHoldingJump: 0
-  holdJumpTimer: 0
-  hAcceleration: 0
+  holdJumpTimer: 0.17999998
+  hAcceleration: 44.571335
+  maxHoldJumpTime: 0.4
