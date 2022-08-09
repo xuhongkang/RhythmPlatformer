@@ -7,11 +7,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public PlayerData playerStats;
     [SerializeField] public LevelData levelConfig;
     [SerializeField] public RealTimeData realTime;
+	[SerializeField] public LayerMask groundLayerMask;
 
     void Start()
     {
         realTime.Init();
-		if (!playerStats.isRunUpNeeded || !playerStats.isVelocityDynamic) {
+		if (!levelConfig.isRunUpNeeded || !playerStats.isVelocityDynamic) {
 			realTime.velocity.x = playerStats.runVelocity;
 		}
 		if (!playerStats.isHoldJumpScalable) {
@@ -65,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             Vector2 rayOrigin = new Vector2(pos.x + levelConfig.sidePadding, pos.y);
             Vector2 rayDirection = Vector2.up;
             float rayDistance = realTime.velocity.y * Time.fixedDeltaTime;
-            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
+            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance, groundLayerMask);
             if (hit2D.collider != null)
             {
                 GroundBehavior ground = hit2D.collider.GetComponent<GroundBehavior>();
@@ -101,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
 			Vector2 rayOrigin = new Vector2(pos.x - levelConfig.sidePadding, pos.y);
             Vector2 rayDirection = Vector2.up;
             float rayDistance = realTime.velocity.y * Time.fixedDeltaTime;
-            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
+            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance, groundLayerMask);
             if (hit2D.collider == null)
             {
                 realTime.isGrounded = false;
