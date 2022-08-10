@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df98250133ac75c4eac999539a587c31, type: 3}
   m_Name: AudioData
   m_EditorClassIdentifier: 
-  durations: 
+  durations:
+  - 1.4
+  - 0.2
+  - 1.3
+  - 0.2
+  - 3

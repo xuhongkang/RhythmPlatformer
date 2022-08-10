@@ -1,0 +1,6 @@
+- Merge Two Scenes (Call)
+- Correct Audio Example Player (Real time)
+- Slider to Adjust Word Speed
+- Display Word (Call)
+- Syllable differentiation via pulling spectrum data (Frequency, Pitch = F0) (Call)
+- Machine Learning Library (1. Processing Time 2. Availabilty) (Call)

@@ -16,7 +16,6 @@ MonoBehaviour:
   jumpVelocity: 50
   maxAcceleration: 10
   maxMaxHoldJumpTime: 0.4
-  isRunUpNeeded: 0
   isVelocityDynamic: 1
-  isVelocityCapped: 0
+  isVelocityCapped: 1
   isHoldJumpScalable: 0

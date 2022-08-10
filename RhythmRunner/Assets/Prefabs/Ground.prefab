@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3077709930179995359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 10, z: 1}
+  m_LocalScale: {x: 300, y: 10, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,7 +48,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundHeight: 0
   levelConfig: {fileID: 11400000, guid: f01d68794f04d3c4d8862d050f0682b1, type: 2}
-  playerStats: {fileID: 11400000, guid: 9f4180acdb3ef8048befab4de940643c, type: 2}
   realTime: {fileID: 11400000, guid: 84dc6091cb75b6f44a8159753b441545, type: 2}
 --- !u!61 &3077709930179995330
 BoxCollider2D:

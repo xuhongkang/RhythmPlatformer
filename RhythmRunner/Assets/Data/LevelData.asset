@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4a65859eed7f849848a9fde7c1704b, type: 3}
   m_Name: LevelData
   m_EditorClassIdentifier: 
+  isRunUpNeeded: 0
   gravity: -400
-  groundHeight: 10
   jumpGroundThreshold: 1
+  sidePadding: 0.7
+  gapMutiplier: 0.8
