@@ -40,6 +40,24 @@ public class PlayerMovement : MonoBehaviour
         {
             realTime.isHoldingJump = false;
         }
+        PauseBehavior();
+    }
+
+    private void PauseBehavior()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (realTime.isPaused)
+            {
+                Time.timeScale = 1;
+                realTime.isPaused = false;
+            }
+            else
+            {
+                Time.timeScale = 0;
+                realTime.isPaused = true;
+            }
+        }
     }
 
     private void FixedUpdate()

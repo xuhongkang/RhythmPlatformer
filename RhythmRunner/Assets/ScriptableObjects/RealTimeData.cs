@@ -8,6 +8,7 @@ public class RealTimeData : ScriptableObject
     public float distance;
     public Vector2 velocity;
     public float groundHeight;
+	public bool isPaused;
     public bool isGrounded;
     public bool isHoldingJump;
     public float holdJumpTimer;
@@ -18,6 +19,7 @@ public class RealTimeData : ScriptableObject
 		distance = 0.0f;
     	velocity = new Vector2(0.0f,0.0f);
     	groundHeight = 0.0f;
+		isPaused = true;
     	isGrounded =  false;
     	isHoldingJump = false;
     	holdJumpTimer = 0.0f;
