@@ -6,7 +6,7 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     [SerializeField] public RealTimeData realTime;
-    [SerializeField] public TextMeshProUGUI distanceText;
+    [SerializeField] public TextMeshProUGUI textDisplay;
     
     void Start()
     {
@@ -16,8 +16,9 @@ public class UIController : MonoBehaviour
     
     void Update()
     {
-        distanceText.text = "Distance: " + Mathf.Round(realTime.distance).ToString() 
+        textDisplay.text = "Distance: " + Mathf.Round(realTime.distance).ToString() 
                              + "\nVelocity: " + Mathf.Round(realTime.velocity.x).ToString()
-                             + "\nAcceleration: " + Mathf.Round(realTime.hAcceleration).ToString();
+                             + "\nAcceleration: " + Mathf.Round(realTime.hAcceleration).ToString()
+							 + "\nInput Volume: " + (Mathf.Round(realTime.volume) * 100.0f).ToString("0.00");
     }
 }
